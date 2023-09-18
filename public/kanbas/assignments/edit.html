@@ -37,8 +37,104 @@
         </ul>
       </td>
       <td valign="top">
+        <select id="select-one-grader">
+          <option selected value="SpeedGrader">
+            SpeedGrader</option>
+        </select>
+        <hr>
         <h2>Assignment Name</h2>
-        <input placeholder="Search for Assignments" id="text-fields-assignments" title="Search Assignments"/>
+        <input placeholder="Assignment Name" id="name" title="Name for Assignment" />
+        <p>
+          <textarea rows="3" , cols="50" placeholder="Assignment Description" id="description">Description for Assignment
+          </textarea>
+        </p>
+
+        <input placeholder="100" id="points" type="number" min="0" max="100" Points for Assignment />
+
+        <p>
+          <label for="assignment-group">Assignment Group</label><br />
+          <select id="assignment-group">
+            <option>ASSIGNMENTS</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="grade-display">Display Grade As</label><br />
+          <select id="grade-diplay">
+            <option>Percentage</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="submission-type">Submission Type</label><br />
+          <select id="submission-type">
+            <option>Online</option>
+          </select>
+        </p>
+
+        Online Entry Options
+        <br />
+        <input type="checkbox" id="chkbox-text" />
+        <label for="chkbox-text">Text Entry</label> <br />
+        <input type="checkbox" id="chkbox-url" />
+        <label for="chkbox-url">Website URL</label> <br />
+        <input type="checkbox" id="chkbox-rec" />
+        <label for="chkbox-rec">Media Recordings</label> <br />
+        <input type="checkbox" id="chkbox-annotation" />
+        <label for="chkbox-annotation">Student Annotation</label> <br />
+        <input type="checkbox" id="chkbox-uploads" />
+        <label for="chkbox-uploads">File Uploads</label> <br />
+
+        <p>
+          <label for="submission-attempts">Submission Attempts</label><br />
+          <select id="submission-attempts">
+            <option>Unlimited</option>
+          </select>
+        </p>
+
+        <p>
+          <label for="plagiarism-review">Plagiarism Review</label><br />
+          <select id="plagiarism-review">
+            <option>None</option>
+          </select>
+        </p>
+
+        Group Assignment
+        <br />
+        <input type="checkbox" id="chkbox-group" />
+        <label for="chkbox-group">This is a group assignment</label> <br />
+
+        <p>
+          Peer Reviews
+          <br />
+          <input type="checkbox" id="chkbox-reviews" />
+          <label for="chkbox-reviews">Require Peer Reviews</label> <br />
+        </p>
+
+        <p>
+          <label for="text-fields-due">
+            Due
+          </label> <br />
+          <input type="date" id="text-fields-due" value="2001-01-01" /><br />
+        </p>
+
+        <p>
+          <label for="text-fields-available">
+            Available from
+          </label> <br />
+          <input type="date" id="text-fields-available" value="2001-01-01" /><br />
+        </p>
+
+        <p>
+          <label for="text-fields-until">
+            Until
+          </label> <br />
+          <input type="date" id="text-fields-until" value="2001-01-01" /><br />
+        </p>
+
+        <br />
+        <button>Cancel</button><button>Save</button>
+
 
       </td>
     </tr>
