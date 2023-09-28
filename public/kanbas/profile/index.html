@@ -1,3 +1,15 @@
+<html>
+
+<head>
+  <link href="/vendors/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/vendors/fontawesome/css/all.css" rel="stylesheet"/>
+  <link href="/kanbas/style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+
+
 <table border="0" width="100%" val>
   <tbody>
     <tr>
@@ -29,25 +41,30 @@
       </td>
       <td valign="top">
         Miles Wilson's profile
-        <hr>
+        <hr/>
         <form action="/kanbas/profile/edit.html">
+          <span style="display: flex; justify-content: flex-end">
+            <button><span>&#9998;</span>Edit Profile</button>
+          </span>
+          <i class="fas fa-user fa-4x"></i>
+
           <h1>Miles Wilson
             <!-- for right alignment: https://stackoverflow.com/a/45901157 -->
-            <div style="display: flex; justify-content: flex-end">
-              <button><span>&#9998;</span>Edit Profile</button>
-            </div>
+
           </h1>
         </form>
 
-        <h2>Contact</h2>
+        <h3>Contact</h3>
         No registered services, you can add some on the <a href="#">settings</a> page
 
-        <h2>Biography</h2>
+        <h3>Biography</h3>
         Computer Science student at Northeastern University
 
-        <h2>Links</h2>
+        <h3>Links</h3>
         <a href="https://github.com/miles-w-3/">Github</a>
       </td>
     </tr>
   </tbody>
 </table>
+</body>
+</html>
