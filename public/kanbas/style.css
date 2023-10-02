@@ -1,0 +1,145 @@
+/* .active {
+  width: 75px;
+  height: 75px;
+  color: #ff7070;
+  background-color: #151212;
+}
+
+.inactive {
+  width: 75px;
+  height: 75px;
+  color: #ff7070;
+  background-color: #151212;
+} */
+
+.wd-sidebar {
+  width: max-content;
+}
+
+.active {
+  color: #ff7070;
+  background-color: #e4e4e4;
+}
+
+/* Currently working */
+body {
+  font-family: "Lato Extended", "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+}
+
+body .list-group li a {
+  text-decoration: none;
+}
+
+body .list-group li a:hover {
+  text-decoration: underline;
+}
+
+body .list-group li:not(.wd-sub-bar-active) a {
+  color: #dc4848;
+}
+
+body .list-group li.wd-sub-bar-active a {
+  color: #2d3b45;
+}
+
+
+ul.wd-sidebar > li.list-group-item.wd-sub-bar-active {
+  border-left: 2px solid #2d3b45;
+  font-weight: bold;
+  color: #2d3b45;
+  border-radius: 0;
+}
+
+body .list-group a:hover {
+  color: #dc4848;
+}
+
+button.btn.btn-secondary{
+  color: #2d3b45;
+  background-color: rgb(226, 227, 229);
+  border: 1px solid;
+  border-color: #c7cdd1;
+  border-radius: 2px;
+  margin-right: 3px;
+}
+
+button.btn.btn-danger{
+  margin-right: 3px;
+  border-radius: 2px;
+}
+
+button.btn.btn-success {
+  color: white;
+  border-radius: 2px;
+  background-color: rgb(87, 176, 87);
+}
+
+.btn.btn-secondary:hover {
+  background-color: rgb(175, 175, 175);
+}
+
+ul.wd-sidebar > .list-group-item {
+  border: none;
+}
+
+.wd-breadcrumbs {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: rgb(199, 205, 209);
+  margin-left: 6px;
+  margin-right: 6px;
+  padding-bottom: 12px;
+  font-size: 20px;
+
+}
+
+
+.nav-link {
+  padding-left: .1rem;
+  padding-right: .1rem;
+}
+
+.wd-green {
+  color: green
+}
+
+.wd-red {
+  color: red
+}
+
+.wd-nav-item {
+  color: #dc4848;
+  background-color: #151212;
+}
+.wd-nav-item:hover {
+  color: #dc4848;
+  background-color: #151212;
+}
+.wd-nav-item:visited {
+  color: #dc4848;
+  background-color: #151212;
+}
+
+.wd-sidebar-labels {
+  font-size: .875rem;
+  font-weight: 400;
+  color: white;
+}
+
+.wd-module-subcontent {
+  padding-left: 32px;
+}
+
+.wd-n-logo {
+  background-image: url("https://instructure-uploads.s3.amazonaws.com/account_145230000000000001/attachments/949/NU_MonoLVX_RGB_RW.png");
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-size: contain;
+  height: 85px;
+  width: 84px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+
