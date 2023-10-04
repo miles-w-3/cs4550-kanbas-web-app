@@ -11,22 +11,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const mainContent = homeContent()
 
-  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent)
+  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent, "Courses")
 });
 
 
 const modules = {
   "Week 0 - INTRO": {
     "LEARNING OBJECTIVES": {
-      "Introduction to the course": "#",
-      "Learn what is Web Development": "#",
-      "Creating a development environment": "#",
-      "Creating a Web Application": "#",
-      "Getting started with the 1st assignment": "#"
+      "Introduction to the course": undefined,
+      "Learn what is Web Development": undefined,
+      "Creating a development environment": undefined,
+      "Creating a Web Application": undefined,
+      "Getting started with the 1st assignment": undefined
     },
     "READING": {
-      "Full Stack Developer - Chapter 1 - Introduction": "#",
-      "Full Stack Developer - Chapter 2 - Creating User Interfaces With HTML": "#"
+      "Full Stack Developer - Chapter 1 - Introduction": undefined,
+      "Full Stack Developer - Chapter 2 - Creating User Interfaces With HTML": undefined
     },
     "SLIDES": {
       "Introduction to Web Development": "#",
@@ -36,13 +36,13 @@ const modules = {
   },
   "Week 1 - HTML": {
     "LEARNING OBJECTIVES": {
-      "Learn how to create user interfaces with HTML": "#",
-      "Keep working on assignment 1": "#",
-      "Deploy the assignment to Netlify": "#",
+      "Learn how to create user interfaces with HTML": undefined,
+      "Keep working on assignment 1": undefined,
+      "Deploy the assignment to Netlify": undefined,
     },
     "READING": {
-      "Full Stack Developer - Chapter 3 - JavaScript Overview": "#",
-      "Full Stack Developer - Chapter 4 - A quick guide to React": "#"
+      "Full Stack Developer - Chapter 3 - JavaScript Overview": undefined,
+      "Full Stack Developer - Chapter 4 - A quick guide to React": undefined
     },
   },
 }
@@ -67,14 +67,14 @@ const topButtons = `
 
 
 export function homeContent() {
-  let acc = `<div class="col-auto">`
+  let acc = `<div class="col-xl-7 col-lg-6 col-md-8 col-sm-12">`
   acc += topButtons
   acc += moduleContent()
   acc += "</div>"
 
-  acc += `<div class="col">`
+  acc += `<div class="col-lg-3 d-none d-lg-block">`
   acc += rightPanel()
-  acc += "</div></div>"
+  acc += "</div>"
 
   return acc
 
@@ -107,11 +107,11 @@ function moduleContent() {
 function makeSubcontentLine(text, link) {
   return `
     <li class="list-group-item">
-      <div class="row">
+      <div class="row ms-4">
         <div class="col">
-          <a class= href="${link}">${text}</a>
+          ${link != null ? `<a href="${link}">${text}</a>` : text}
         </div>
-        <div class=col-auto d-flex justify-content-end">
+        <div class="col-auto float-end">
           <i class="fas fa-check-circle wd-green me-2"></i><i class="fas fa-ellipsis-v"></i>
         </div>
       </div>
@@ -142,11 +142,11 @@ function fillRightPanel() {
 
 function rightPanel() {
   return `
-    <div class="container">
+    <div>
       <h5>Course Status</h5>
       <div class="row mb-2">
-        <button class="col btn btn-secondary me-0 ms-0" type="button"><i class="fas fa-ban"></i> Unpublish</button>
-        <button class="col btn btn-success me-0 ms-0" type="button"><i class="far fa-check-circle"></i> Published</button>
+        <button class="col btn btn-secondary me-0 ms-0 ps-1 pe-1" type="button"><i class="fas fa-ban"></i> Unpublish</button>
+        <button class="col btn btn-success me-0 ms-0 ps-1 pe-1" type="button"><i class="fas fa-check-circle"></i> Published</button>
       </div>
       ${fillRightPanel()}
     </div>

@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const mainContent = profileScreen()
 
-  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent)
+  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent, "Account")
 });
 
 

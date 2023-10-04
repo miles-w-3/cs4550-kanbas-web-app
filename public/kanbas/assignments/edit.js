@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const mainContent = editScreen()
 
-  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent)
+  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent, "Courses")
 });
 
 const topRow = `
@@ -166,7 +166,7 @@ function editScreen() {
           </label>
         </div>
         <div class="col d-flex justify-content-end">
-          <button class="btn btn-secondary">Cancel</button><button class="btn btn-danger">Save</button>
+          <a href="/kanbas/assignments"><button class="btn btn-secondary">Cancel</button><button class="btn btn-danger">Save</button></a>
         </div>
     </div>
   `

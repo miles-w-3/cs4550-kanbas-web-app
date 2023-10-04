@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const mainContent = dashboardContent()
 
-  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent)
+  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent, "Dashboard")
 });
 
 function dashboardContent() {
@@ -49,10 +49,10 @@ function makeCard(cardTitle, cardText, cardSub) {
     <img src="/kanbas/card.jpg"
         class="card-img-top" alt="...">
     <div class="card-body">
-        <h5 class="card-title">${cardTitle}</h5>
+        <h5 class="card-title text-truncate"><a class="wd-red text-decoration-none wd-hover-underline" href="/kanbas/home.html">${cardTitle}</a></h5>
         <div class="card-text">${cardText}</div>
         <small class="text-muted card-text">${cardSub}</small>
-        <div class="p-1"><i class="fas fa-edit fa-lg text-muted"></i></div>
+        <div class="p-1 "><i class="fas fa-edit fa-lg text-muted"></i></div>
     </div>
 
   </div>

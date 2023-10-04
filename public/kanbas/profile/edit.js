@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const mainContent = editScreen()
 
-  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent)
+  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent, "Account")
 });
 
 function editScreen() {
@@ -76,8 +76,7 @@ function editScreen() {
 
 
     <div class="col">
-      <form class=" action="/kanbas/profile/index.html">
-
+      <form action="/kanbas/profile/index.html">
         <button class="btn btn-secondary"><span>&#9998;</span> Cancel Editing</button>
       </form>
     </div>

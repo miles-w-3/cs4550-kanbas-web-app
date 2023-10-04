@@ -11,13 +11,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
   const mainContent = gradesContent()
 
-  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent)
+  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent, "Courses")
 });
 
 
 function gradesContent() {
   return `
-    <div class="col">
+    <div class="col-xl-10 col-lg-6 col-md-4">
 
     <div class="d-flex justify-content-end">
       <div class="pe-2">

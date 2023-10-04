@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", function() {
   const breadCrumbs = ["CS4550.12631.202410", "Assignments"]
   const breadCrumbArgs = [breadCrumbs, true]
 
-  const subNavArgs = [subNavMap, "Profile"]
+  const subNavArgs = [subNavMap, "Assignments"]
 
   const mainContent = assignmentsScreen()
 
-  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent)
+  document.body.innerHTML = navLayout(breadCrumbArgs, subNavArgs, mainContent, "Courses")
 });
 
 const assignmentsSetup = {
@@ -69,7 +69,7 @@ function blocks() {
               <i class="fas fa-pen-square wd-green"></i>
             </div>
             <div class="col">
-              ${itemName}
+              <a class="wd-assignment-link" href="/kanbas/assignments/edit.html">${itemName}</a>
               <div class="text-muted">
                 ${itemContent[0]} <br />
                 ${itemContent[1]}

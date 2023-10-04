@@ -1,8 +1,8 @@
 export function subNav(settingsMap, active) {
   console.log(`settingsMap is ${JSON.stringify(settingsMap)}`)
   let acc = `
-    <ul class="list-group wd-sidebar p-3">
-
+    <div class="col-auto d-none d-md-block me-2">
+      <ul class="list-group wd-sidebar">
     `
   for (const [text, link] of Object.entries(settingsMap)) {
     let activeText = ''
@@ -12,7 +12,7 @@ export function subNav(settingsMap, active) {
     acc += `    <li class="list-group-item ${activeText}"><a href="${link}">${text}</a></li>`
   }
 
-  acc += '</ul>'
+  acc += '</ul></div>'
   return acc;
 }
 
@@ -20,7 +20,7 @@ export function breadCrumbs(crumbsList, showStudentViewButton) {
   return `
     <div class="row wd-breadcrumbs">
       <div class="col">
-        <nav style="--bs-breadcrumb-divider: '>';" class="d-flex justify-content-start wd-red" aria-label="breadcrumb">
+        <nav class="d-flex justify-content-start wd-red wd-breadcrumb-nav" aria-label="breadcrumb">
           <ol class="breadcrumb">
             ${fillBreadCrumbs(crumbsList)}
           </ol>
@@ -55,4 +55,52 @@ function fillBreadCrumbs(crumbsList) {
     acc += `<li class="breadcrumb-item" aria-current="page">${crumbsList[i]}</li>`
   }
   return acc;
+}
+
+const sidebarEntries = {
+  Account: ["/kanbas/profile", `<i class="far fa-user fa"></i>`],
+  Dashboard: ["/kanbas/dashboard.html", `<i class="fas fa-tachometer-alt fa"></i>`],
+  Courses: ["/kanbas/home.html", `<i class="fas fa-book fa wd-sidebar"></i>`],
+  Calendar: ["#", `<i class="far fa-calendar-alt"></i>`],
+  Inbox: ["#", `<i class="fas fa-inbox"></i>`],
+  History: ["#", `<i class="far fa-clock"></i>`],
+  Studio: ["#", `<i class="fas fa-tv"></i>`],
+  Commons: ["#", `<i class="fas fa-copyright"></i>`],
+  Help: ["#", `<i class="far fa-question-circle"></i>`]
+}
+
+export function newSidebar(highlight="") {
+  return `
+    <div class="wd-main-sidebar flex-column">
+      <ul class="nav flex-column text-center wd-sidebar">
+        <li class="wd-nav-item">
+          <a href="/kanbas/index.html" class="wd-nav-item">
+            <div class="wd-n-logo"></div>
+          </a>
+        </li>
+        ${fillSidebarItems(highlight)}
+      </ul>
+    </div>
+  `
+}
+
+function fillSidebarItems(highlight) {
+  let acc = "";
+  for (const [label, config] of Object.entries(sidebarEntries)) {
+    acc += sidebarItem(label, config, highlight)
+  }
+  return acc;
+}
+
+function sidebarItem(label, config, highlight) {
+  const activeHighlight = highlight === label ? "wd-sidebar-active" : ""
+  let acc = `
+    <li class ="wd-nav-item">
+      <a href="${config[0]}" class="nav-link wd-nav-item ${activeHighlight}">
+        ${config[1]}
+        <div class="wd-sidebar-labels ${activeHighlight}">${label}</div>
+      </a>
+    </li>
+  `
+  return acc
 }
