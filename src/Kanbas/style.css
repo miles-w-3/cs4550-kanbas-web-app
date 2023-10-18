@@ -1,0 +1,32 @@
+.main-content {
+  margin-left: 85px;
+  width: 100%;
+}
+
+button.btn.btn-secondary {
+  color: #2d3b45;
+  background-color: rgb(226, 227, 229);
+  border: 1px solid;
+  border-color: #c7cdd1;
+  border-radius: 2px;
+  margin-right: 3px;
+}
+
+button.btn.btn-danger {
+  margin-right: 3px;
+  border-radius: 2px;
+}
+
+button.btn.btn-success {
+  color: white;
+  border-radius: 2px;
+  background-color: rgb(87, 176, 87);
+}
+
+.btn.btn-secondary:hover {
+  background-color: rgb(175, 175, 175);
+}
+
+.module-group {
+  border-radius: 0px;
+}

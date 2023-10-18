@@ -1,0 +1,47 @@
+.wd-main-sidebar {
+  position: fixed;
+  width: 84px;
+  background-color: #151212;
+  top: 0;
+  left: 0;
+  background-color: #151212;
+  text-align: center;
+  border-radius: 0;
+}
+
+.wd-active {
+  color: #ff7070 !important;
+  background-color: white !important;
+}
+
+.wd-active:hover {
+  color: #ff7070;
+}
+
+.wd-n-logo {
+  background-image: url("https://instructure-uploads.s3.amazonaws.com/account_145230000000000001/attachments/949/NU_MonoLVX_RGB_RW.png");
+  background-position-x: 50%;
+  background-position-y: 50%;
+  background-size: contain;
+  height: 85px;
+  width: 84px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.wd-nav-item {
+  color: #dc4848;
+  background-color: #151212;
+  text-decoration: none;
+  font-size: .875rem;
+}
+
+.wd-nav-item:hover {
+  color: #dc4848;
+  text-decoration: none;
+}
+
+nav {
+  width: max-content
+}
+

@@ -1,0 +1,35 @@
+.list-group:not(.module-group) {
+  width: max-content;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+body .list-group li a  {
+  color: #dc4848;
+}
+
+body li.list-group-item.wd-subnav-active a {
+  color: #2d3b45 !important;
+}
+
+li.list-group-item.wd-subnav-active {
+  border-left: 2px solid #2d3b45;
+  font-weight: bold;
+  border-radius: 0;
+}
+
+.list-group-item:not(.module-group) {
+  border: none;
+}
+
+.wd-breadcrumb-nav {
+  --bs-breadcrumb-divider: '>';
+  font-size: 18px;
+}
