@@ -4,7 +4,12 @@ import BreadCrumbs from "../SubNavigation/BreadCrumbs";
 import CourseNavigation from "./CourseNavigation";
 
 function _fillCrumbs(crumbs, params) {
-  if (params.courseId) crumbs.push(params.courseId);
+
+  if (params.courseId){
+
+    const course = db.courses.find((course) => course._id === params.courseId);
+    crumbs.push(course.number);
+  }
 
   // get page name
   const pageName = params["*"].split('/')[0];

@@ -10,21 +10,8 @@ import Grades from "./Grades";
 import CourseContent from "./CourseContent";
 
 function Courses() {
-  const { courseId, assignmentId } = useParams();
-  const course = db.courses.find((course) => course._id === courseId);
-  const assignment = db.assignments.find(
-    (assignment) => assignment._id === assignmentId);
-  const location = useLocation()
-  const pageParts = location.pathname.split('/');
-  const page = pageParts[pageParts.length - 1] ?? pageParts[pageParts.length - 2] ;
-
-  const crumbs = [course.number, page]
-
-  console.log(`FROM MAIN: is ${JSON.stringify(useParams())}`)
-
 
   return (
-
     <Routes>
       <Route path="/" element={<Navigate to="Home" />} />
       <Route path="Home" element={<Home />} />
