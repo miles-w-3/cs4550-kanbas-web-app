@@ -7,6 +7,7 @@ import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
+import CourseContent from "./CourseContent";
 
 function Courses() {
   const { courseId, assignmentId } = useParams();
@@ -19,32 +20,21 @@ function Courses() {
 
   const crumbs = [course.number, page]
 
-  if (assignment != null) {
-    crumbs.push(assignment.title);
-    console.log(`Assignment is ${assignment.title}`)
-  } else {
-    console.log("Assignment is null")
-  }
+  console.log(`FROM MAIN: is ${JSON.stringify(useParams())}`)
+
 
   return (
-    <>
-      <BreadCrumbs crumbs={crumbs}/>
-      <div className="row">
-        <CourseNavigation/>
 
-        { /* it is expected that each of these elements are a col*/}
-        <Routes>
-          <Route path="/" element={<Navigate to="Home" />} />
-          <Route path="Home" element={<Home />} />
-          <Route path="Modules" element={<Modules />} />
-          <Route path="Assignments" element={<Assignments />} />
-          <Route path="Grades" element={<Grades />} />
-          <Route path="Assignments/:assignmentId" element={<AssignmentEditor/>} />
-          <Route path="Grades" element={<h1>Grades</h1>} />
+    <Routes>
+      <Route path="/" element={<Navigate to="Home" />} />
+      <Route path="Home" element={<Home />} />
+      <Route path="Modules" element={<Modules />} />
+      <Route path="Assignments" element={<Assignments />} />
+      <Route path="Grades" element={<Grades />} />
+      <Route path="Assignments/:assignmentId" element={<AssignmentEditor/>} />
+      <Route path="*" element={<CourseContent/>}/>
+    </Routes>
 
-        </Routes>
-      </div>
-    </>
   );
 }
 export default Courses;

@@ -1,12 +1,14 @@
 import db from "../../Database";
 import { useParams } from "react-router-dom";
+import CourseContent from "../CourseContent";
 function Grades() {
   const { courseId } = useParams();
   const assignments = db.assignments.filter((assignment) => assignment.course === courseId);
   const enrollments = db.enrollments.filter((enrollment) => enrollment.course === courseId);
 
   return (
-    <div className="col">
+    <CourseContent>
+      <div className="col">
       <h1>Grades</h1>
       <div className="table-responsive">
         <table className="table">
@@ -29,6 +31,7 @@ function Grades() {
                 </tr>);
             })}
           </tbody></table>
-      </div></div>);
+      </div></div>
+    </CourseContent>);
 }
 export default Grades;

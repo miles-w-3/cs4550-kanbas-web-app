@@ -1,3 +1,4 @@
+import CourseContent from "../CourseContent";
 import ModuleList from "../Modules/ModuleList";
 
 function RightPanel() {
@@ -42,11 +43,14 @@ function RightPanel() {
 
 export default function Home() {
   return(
-    <div className="col">
-      <div className="row me-2">
-        <ModuleList colProps={'col'}/>
-        <RightPanel />
+    <CourseContent>
+      <div className="col">
+        <div className="row me-2">
+          <ModuleList colProps={'col'} />
+          <RightPanel />
+        </div>
       </div>
-    </div>
+    </CourseContent>
+
   );
 }
