@@ -8,14 +8,23 @@ import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 
-
 function Courses() {
-  const { courseId } = useParams();
+  const { courseId, assignmentId } = useParams();
   const course = db.courses.find((course) => course._id === courseId);
+  const assignment = db.assignments.find(
+    (assignment) => assignment._id === assignmentId);
   const location = useLocation()
   const pageParts = location.pathname.split('/');
   const page = pageParts[pageParts.length - 1] ?? pageParts[pageParts.length - 2] ;
+
   const crumbs = [course.number, page]
+
+  if (assignment != null) {
+    crumbs.push(assignment.title);
+    console.log(`Assignment is ${assignment.title}`)
+  } else {
+    console.log("Assignment is null")
+  }
 
   return (
     <>
@@ -31,10 +40,6 @@ function Courses() {
           <Route path="Assignments" element={<Assignments />} />
           <Route path="Grades" element={<Grades />} />
           <Route path="Assignments/:assignmentId" element={<AssignmentEditor/>} />
-          <Route
-            path="Assignments/:assignmentId"
-            element={<h1>Assignment Editor</h1>}
-          />
           <Route path="Grades" element={<h1>Grades</h1>} />
 
         </Routes>

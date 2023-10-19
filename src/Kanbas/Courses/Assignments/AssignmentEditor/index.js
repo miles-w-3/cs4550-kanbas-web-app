@@ -1,6 +1,7 @@
-import React from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
 import db from "../../../Database";
+
+
 function AssignmentEditor() {
   const { courseId, assignmentId } = useParams();
   const assignment = db.assignments.find(
@@ -14,7 +15,7 @@ function AssignmentEditor() {
   return (
     <div className="col">
       <h2>Edit {assignment.title}</h2>
-      <input value={assignment.title}
+      <input defaultValue={assignment.title}
         className="form-control mb-2" />
       <Link to={`/Kanbas/Courses/${courseId}/Assignments`}
         className="btn btn-secondary me-2 rounded-0">
