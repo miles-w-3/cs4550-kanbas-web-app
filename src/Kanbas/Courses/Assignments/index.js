@@ -2,13 +2,13 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import db from "../../Database";
 import CourseContent from "../CourseContent";
-function Assignments() {
+function Assignments({courses}) {
   const { courseId } = useParams();
   const assignments = db.assignments;
   const courseAssignments = assignments.filter(
     (assignment) => assignment.course === courseId);
   return (
-    <CourseContent>
+    <CourseContent courses={courses}>
       <div className="col me-4">
         <h2>Assignments for course {courseId}</h2>
 

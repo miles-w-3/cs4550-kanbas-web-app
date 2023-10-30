@@ -1,26 +1,26 @@
-import db from "../../Kanbas/Database";
 import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
-import CourseNavigation from "./CourseNavigation";
-import BreadCrumbs from "../SubNavigation/BreadCrumbs";
 import Modules from "./Modules";
 import Home from "./Home";
 import Assignments from "./Assignments";
 import AssignmentEditor from "./Assignments/AssignmentEditor";
 import Grades from "./Grades";
 import CourseContent from "./CourseContent";
+import store from "./store";
+import { Provider } from "react-redux";
 
-function Courses() {
-
+function Courses({ courses }) {
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="Home" />} />
-      <Route path="Home" element={<Home />} />
-      <Route path="Modules" element={<Modules />} />
-      <Route path="Assignments" element={<Assignments />} />
-      <Route path="Grades" element={<Grades />} />
-      <Route path="Assignments/:assignmentId" element={<AssignmentEditor/>} />
-      <Route path="*" element={<CourseContent/>}/>
-    </Routes>
+    <Provider store={store}>
+      <Routes>
+        <Route path="/" element={<Navigate to="Home" />} />
+        <Route path="Home" element={<Home courses={courses}/>} />
+        <Route path="Modules" element={<Modules courses={courses} />} />
+        <Route path="Assignments" element={<Assignments courses={courses} />} />
+        <Route path="Grades" element={<Grades courses={courses} />} />
+        <Route path="Assignments/:assignmentId" element={<AssignmentEditor courses={courses} />} />
+        <Route path="*" element={<CourseContent courses={courses}/>}/>
+      </Routes>
+    </Provider>
 
   );
 }

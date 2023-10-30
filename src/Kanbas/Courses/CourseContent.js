@@ -3,11 +3,11 @@ import db from "../../Kanbas/Database";
 import BreadCrumbs from "../SubNavigation/BreadCrumbs";
 import CourseNavigation from "./CourseNavigation";
 
-function _fillCrumbs(crumbs, params) {
+function _fillCrumbs(crumbs, params, courses) {
 
   if (params.courseId){
 
-    const course = db.courses.find((course) => course._id === params.courseId);
+    const course = courses.find((course) => course._id === params.courseId);
     crumbs.push(course.number);
   }
 
@@ -25,11 +25,11 @@ function _fillCrumbs(crumbs, params) {
 }
 
 
-export default function CourseContent({ children }) {
+export default function CourseContent({ children, courses }) {
   const params = useParams();
   const crumbs = [];
 
-  _fillCrumbs(crumbs, params);
+  _fillCrumbs(crumbs, params, courses);
 
   return (
     <>

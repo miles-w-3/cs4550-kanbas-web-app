@@ -2,13 +2,13 @@ import db from "../../Database";
 import { useParams } from "react-router-dom";
 import CourseContent from "../CourseContent";
 import { FaCheckCircle, FaCog, FaFileExport, FaFileImport, FaFilter } from "react-icons/fa";
-function Grades() {
+function Grades({courses}) {
   const { courseId } = useParams();
   const assignments = db.assignments.filter((assignment) => assignment.course === courseId);
   const enrollments = db.enrollments.filter((enrollment) => enrollment.course === courseId);
 
   return (
-    <CourseContent>
+    <CourseContent courses={courses}>
       <div className="col me-2">
         <div className="d-flex justify-content-end">
           <div className="pe-2">

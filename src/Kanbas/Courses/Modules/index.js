@@ -1,9 +1,9 @@
 import CourseContent from "../CourseContent";
 import ModuleList from "./ModuleList";
 
-export default function Modules() {
+export default function Modules({courses}) {
   return (
-    <CourseContent>
+    <CourseContent courses={courses}>
       <div className="col">
         <ModuleList colProps={'col pe-4'} />
       </div>

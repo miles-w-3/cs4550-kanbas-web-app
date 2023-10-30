@@ -3,7 +3,7 @@ import db from "../../../Database";
 import CourseContent from "../../CourseContent";
 
 
-function AssignmentEditor() {
+function AssignmentEditor({courses}) {
   const { courseId, assignmentId } = useParams();
   const assignment = db.assignments.find(
     (assignment) => assignment._id === assignmentId);
@@ -14,7 +14,7 @@ function AssignmentEditor() {
     navigate(`/Kanbas/Courses/${courseId}/Assignments`);
   };
   return (
-    <CourseContent>
+    <CourseContent courses={courses}>
       <div className="col">
         <h2>Edit {assignment.title}</h2>
         <input defaultValue={assignment.title}
