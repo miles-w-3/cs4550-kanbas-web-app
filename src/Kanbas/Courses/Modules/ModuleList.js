@@ -31,6 +31,68 @@ function TopButtons() {
   );
 }
 
+function Module({title, content, onEdit, onDelete}) {
+  return (
+    <li class="list-group-item list-group-item-secondary module-group mb-4">
+      <div class="row">
+        <div class="col-auto d-flex align-items-center">
+          <i class="fas fa-pen-square wd-green"></i>
+        </div>
+        <div class="col">
+          {title}
+          <div class="text-muted">
+            {content}
+          </div>
+        </div>
+        <div class="col-auto d-flex align-items-center">
+          <button
+            className='btn btn-danger'
+            onClick={() => onDelete()}>
+            Delete
+          </button>
+          <button
+            className='btn btn-secondary'
+            onClick={() => onEdit()}>
+            Edit
+          </button>
+
+        </div>
+      </div>
+    </li>
+  );
+  // function blocks() {
+
+
+  //   let acc = `<ul class="list-group p-3">`
+  //   for (const [blockName, blockContent] of Object.entries(assignmentsSetup)) {
+  //     acc += `<li class="list-group-item list-group-item-secondary">${blockName}</li>`
+  //     for (const [itemName, itemContent] of Object.entries(blockContent)) {
+  //       acc += `
+  //       <li class="list-group-item">
+  //         <div class="row">
+  //           <div class="col-auto d-flex align-items-center">
+  //             <i class="fas fa-pen-square wd-green"></i>
+  //           </div>
+  //           <div class="col">
+  //             <a class="wd-assignment-link" href="/kanbas/assignments/edit.html">${itemName}</a>
+  //             <div class="text-muted">
+  //               ${itemContent[0]} <br />
+  //               ${itemContent[1]}
+  //             </div>
+  //           </div>
+  //           <div class="col-auto d-flex align-items-center">
+  //             <i class="fas fa-check-circle wd-green me-4"></i><i class="fas fa-ellipsis-v"></i>
+  //           </div>
+  //         </div>
+  //       </li>`
+  //     }
+  //     acc += "</ul>"
+  //   }
+
+  //   return acc;
+  // }
+}
+
 export default function ModuleList({ colProps }) {
   const { courseId } = useParams();
   const modules = useSelector((state) => state.modulesReducer.modules);
@@ -63,18 +125,14 @@ export default function ModuleList({ colProps }) {
         {
           modules
             .filter((module) => module.course === courseId)
-            .map((module, index) => (
-              <li key={index} className="list-group-item list-group-item-secondary module-group mb-4">
-                {module.name}
-                <button
-                  onClick={() => dispatch(deleteModule(module._id))}>
-                  Delete
-                </button>
-                <button
-                  onClick={() => dispatch(setModule(module))}>                  Edit
-                </button>
-
-              </li>
+            .map((module) => (
+              <Module
+                key={module._id}
+                title={module.name}
+                content={module.description}
+                onDelete={() => dispatch(deleteModule(module._id))}
+                onEdit={() => dispatch(setModule(module))}
+              />
             ))
         }
       </ul>
