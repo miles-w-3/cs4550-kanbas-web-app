@@ -34,10 +34,7 @@ function TopButtons() {
 function Module({title, content, onEdit, onDelete}) {
   return (
     <li class="list-group-item list-group-item-secondary module-group mb-4">
-      <div class="row">
-        <div class="col-auto d-flex align-items-center">
-          <i class="fas fa-pen-square wd-green"></i>
-        </div>
+      <div className="row">
         <div class="col">
           {title}
           <div class="text-muted">
@@ -105,21 +102,29 @@ export default function ModuleList({ colProps }) {
       <hr />
 
       <ul className="list-group module-group">
-        <li className="list-group-item">
-          <button
-            onClick={() => dispatch(addModule({ ...module, course: courseId }))}>
-            Add
-          </button>
-          <button
-            onClick={() => dispatch(updateModule(module))}>
-            Update
-          </button>
-          <input value={module.name}
-            onChange={(e) => dispatch(setModule({ ...module, name: e.target.value }))}
-          />
-          <textarea value={module.description}
-            onChange={(e) => dispatch(setModule({ ...module, description: e.target.value }))}
-          />
+        <li className="list-group-item list-group-item-secondary module-group mb-4">
+          <div className="row">
+            <div className="col">
+              <input value={module.name}onChange={(e) => dispatch(setModule({ ...module, name: e.target.value }))}/>
+              <br />
+              <textarea value={module.description}
+                onChange={(e) => dispatch(setModule({ ...module, description: e.target.value }))}
+              />
+            </div>
+            <div class="col-auto d-flex align-items-center">
+              <button
+                className="btn btn-success"
+                onClick={() => dispatch(addModule({ ...module, course: courseId }))}>
+                Add
+              </button>
+              <button
+                className="btn btn-secondary"
+                onClick={() => dispatch(updateModule(module))}>
+                Update
+              </button>
+
+            </div>
+          </div>
         </li>
 
         {
