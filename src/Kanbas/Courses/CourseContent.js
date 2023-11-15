@@ -2,14 +2,11 @@ import { useParams } from "react-router";
 import db from "../../Kanbas/Database";
 import BreadCrumbs from "../SubNavigation/BreadCrumbs";
 import CourseNavigation from "./CourseNavigation";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
-function _fillCrumbs(crumbs, params, courses) {
-
-  if (params.courseId){
-
-    const course = courses.find((course) => course._id === params.courseId);
-    crumbs.push(course.number);
-  }
+function _fillCrumbs(crumbs, course, params) {
+  crumbs.push(course.number);
 
   // get page name
   const pageName = params["*"].split('/')[0];
@@ -27,9 +24,21 @@ function _fillCrumbs(crumbs, params, courses) {
 
 export default function CourseContent({ children, courses }) {
   const params = useParams();
+  const [course, setCourse] = useState({});
+  const findCourseById = async (courseId) => {
+    const response = await axios.get(
+      `${URL}/${courseId}`
+    );
+    setCourse(response.data);
+  };
+  useEffect(() => {
+    findCourseById(params.courseId);
+  }, [params.courseId]);
+
+
   const crumbs = [];
 
-  _fillCrumbs(crumbs, params, courses);
+  _fillCrumbs(crumbs, course, params);
 
   return (
     <>

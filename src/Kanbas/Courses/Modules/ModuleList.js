@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { useParams } from "react-router-dom";
-import db from "../../Database";
 import { FaCheckCircle, FaEllipsisV, FaPlus } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -8,7 +7,15 @@ import {
   deleteModule,
   updateModule,
   setModule,
+  setModules,
 } from "./modulesReducer";
+import {
+  findModulesForCourse,
+  createModule,
+  deleteModule as clientDeleteModule,
+  updateModule as clientUpdateModule
+} from "./client";
+
 
 function TopButtons() {
   return (
@@ -57,44 +64,40 @@ function Module({title, content, onEdit, onDelete}) {
       </div>
     </li>
   );
-  // function blocks() {
-
-
-  //   let acc = `<ul class="list-group p-3">`
-  //   for (const [blockName, blockContent] of Object.entries(assignmentsSetup)) {
-  //     acc += `<li class="list-group-item list-group-item-secondary">${blockName}</li>`
-  //     for (const [itemName, itemContent] of Object.entries(blockContent)) {
-  //       acc += `
-  //       <li class="list-group-item">
-  //         <div class="row">
-  //           <div class="col-auto d-flex align-items-center">
-  //             <i class="fas fa-pen-square wd-green"></i>
-  //           </div>
-  //           <div class="col">
-  //             <a class="wd-assignment-link" href="/kanbas/assignments/edit.html">${itemName}</a>
-  //             <div class="text-muted">
-  //               ${itemContent[0]} <br />
-  //               ${itemContent[1]}
-  //             </div>
-  //           </div>
-  //           <div class="col-auto d-flex align-items-center">
-  //             <i class="fas fa-check-circle wd-green me-4"></i><i class="fas fa-ellipsis-v"></i>
-  //           </div>
-  //         </div>
-  //       </li>`
-  //     }
-  //     acc += "</ul>"
-  //   }
-
-  //   return acc;
-  // }
 }
 
 export default function ModuleList({ colProps }) {
   const { courseId } = useParams();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    findModulesForCourse(courseId)
+      .then((modules) =>
+        dispatch(setModules(modules))
+      );
+  }, [courseId, dispatch]);
+
   const modules = useSelector((state) => state.modulesReducer.modules);
   const module = useSelector((state) => state.modulesReducer.module);
-  const dispatch = useDispatch();
+
+  const handleAddModule = () => {
+    createModule(courseId, module).then((module) => {
+      dispatch(addModule(module));
+    });
+  };
+
+  const handleDeleteModule = (moduleId) => {
+    clientDeleteModule(moduleId).then((status) => {
+      dispatch(deleteModule(moduleId));
+    });
+  };
+
+  const handleUpdateModule = async () => {
+    const status = await clientUpdateModule(module);
+    dispatch(updateModule(module));
+  };
+
+
 
   return (
     <div className={colProps ?? ''}>
@@ -114,7 +117,7 @@ export default function ModuleList({ colProps }) {
             <div class="col-auto d-flex align-items-center">
               <button
                 className="btn btn-success"
-                onClick={() => dispatch(addModule({ ...module, course: courseId }))}>
+                onClick={handleAddModule}>
                 Add
               </button>
               <button
@@ -135,8 +138,8 @@ export default function ModuleList({ colProps }) {
                 key={module._id}
                 title={module.name}
                 content={module.description}
-                onDelete={() => dispatch(deleteModule(module._id))}
-                onEdit={() => dispatch(setModule(module))}
+                onDelete={() => handleDeleteModule(module._id)}
+                onEdit={() => handleUpdateModule()}
               />
             ))
         }

@@ -51,7 +51,7 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
         <button onClick={addNewCourse} className="btn btn-secondary">
           Add
         </button>
-        <button onClick={updateCourse} className="btn btn-secondary" >
+        <button onClick={() => updateCourse(course)} className="btn btn-secondary" >
           Update
         </button>
       <hr />
@@ -62,7 +62,7 @@ export default function Dashboard({ courses, course, setCourse, addNewCourse,
       <div className="d-flex gap-3 flex-wrap">
          {courses.map((course) => (
           <CourseCard
-            key={course._id}
+            key={`${course._id}-${course.name}`}
             course={course}
             onDelete={() => deleteCourse(course._id)}
             onEdit={() => setCourse(course)}/>

@@ -41,9 +41,9 @@ function RightPanel() {
   );
 }
 
-export default function Home({courses}) {
+export default function Home() {
   return(
-    <CourseContent courses={courses}>
+    <CourseContent>
       <div className="col">
         <div className="row me-2">
           <ModuleList colProps={'col'} />

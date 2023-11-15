@@ -5,35 +5,58 @@ import Dashboard from "./Dashboard";
 import 'bootstrap/dist/css/bootstrap.css';
 import './style.css'
 import Courses from "./Courses";
-import { useState } from "react";
-import db from "./Database";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 function Kanbas() {
 
-  const [courses, setCourses] = useState(db.courses);
+  const [courses, setCourses] = useState([]);
+  const URL = "http://localhost:4000/api/courses";
+  const findAllCourses = async () => {
+    const response = await axios.get(URL);
+    setCourses(response.data);
+  };
+  useEffect(() => {
+    findAllCourses();
+  }, []);
+
   const [course, setCourse] = useState({
     name: "Web Dev", number: "CS4550",
     startDate: "2023-09-10", endDate: "2023-12-15",
   });
-  const addNewCourse = () => {
-    setCourses([...courses,
-    {
-      ...course,
-      _id: new Date().getTime()
-    }]);
+
+  const addCourse = async () => {
+    const response = await axios.post(URL, course);
+    setCourses([
+      response.data,
+      ...courses,
+    ]);
+    setCourse({ name: "", number: "", startDate: "", endDate: "" });
   };
 
-  const deleteCourse = (courseId) => {
-    setCourses(courses.filter((course) => course._id !== courseId));
+  const deleteCourse = async (idToDelete) => {
+    // console.log(`Course is ${JSON.stringify(course)}`)
+    await axios.delete(
+      `${URL}/${idToDelete}`
+    );
+    setCourses(courses.filter((existingCourse) => existingCourse._id !== idToDelete));
   };
 
-  const updateCourse = () => {
+  const updateCourse = async (course) => {
+    console.log('In update course')
+    console.log()
+    const reponse = await axios.put(
+      `${URL}/${course._id}`,
+      course
+    );
+
     setCourses(
       courses.map((c) => {
         if (c._id === course._id) {
           return course;
         } else {
+
           return c;
         }
       })
@@ -52,7 +75,7 @@ function Kanbas() {
               courses={courses}
               course={course}
               setCourse={setCourse}
-              addNewCourse={addNewCourse}
+              addNewCourse={addCourse}
               deleteCourse={deleteCourse}
               updateCourse={updateCourse}
             />}

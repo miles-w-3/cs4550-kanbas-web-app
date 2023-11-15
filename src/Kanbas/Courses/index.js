@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import axios from "axios";
 import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
 import Modules from "./Modules";
 import Home from "./Home";
@@ -8,17 +10,18 @@ import CourseContent from "./CourseContent";
 import store from "./store";
 import { Provider } from "react-redux";
 
-function Courses({ courses }) {
+function Courses() {
+
   return (
     <Provider store={store}>
       <Routes>
         <Route path="/" element={<Navigate to="Home" />} />
-        <Route path="Home" element={<Home courses={courses}/>} />
-        <Route path="Modules" element={<Modules courses={courses} />} />
-        <Route path="Assignments" element={<Assignments courses={courses} />} />
-        <Route path="Grades" element={<Grades courses={courses} />} />
-        <Route path="Assignments/:assignmentId" element={<AssignmentEditor courses={courses} />} />
-        <Route path="*" element={<CourseContent courses={courses}/>}/>
+        <Route path="Home" element={<Home />} />
+        <Route path="Modules" element={<Modules />} />
+        <Route path="Assignments" element={<Assignments />} />
+        <Route path="Grades" element={<Grades />} />
+        <Route path="Assignments/:assignmentId" element={<AssignmentEditor />} />
+        <Route path="*" element={<CourseContent />}/>
       </Routes>
     </Provider>
 
