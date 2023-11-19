@@ -7,7 +7,7 @@ function Assignment5() {
       <h1>Assignment 5</h1>
       <Har />
       <div className="list-group">
-        <a href="http://localhost:4000/a5/welcome"
+        <a href={`${process.env.KANBAS_URL}/a5/welcome`}
           className="list-group-item">
           Welcome
         </a>
