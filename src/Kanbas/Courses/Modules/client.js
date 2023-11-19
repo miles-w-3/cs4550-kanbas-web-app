@@ -3,6 +3,7 @@ const COURSES_URL = `${process.env.REACT_APP_KANBAS_BACKEND}/api/courses`;
 export const findModulesForCourse = async (courseId) => {
   const response = await axios
     .get(`${COURSES_URL}/${courseId}/modules`);
+  console.log(`Got modules ${JSON.stringify(response.data)}`);
   return response.data;
 };
 
@@ -24,6 +25,7 @@ export const deleteModule = async (moduleId) => {
 export const updateModule = async (module) => {
   const response = await axios.
     put(`${MODULES_URL}/${module._id}`, module);
+  console.log(`for module update, got ${JSON.stringify(response)}`)
   return response.data;
 };
 

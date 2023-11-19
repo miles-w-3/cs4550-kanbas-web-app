@@ -36,7 +36,6 @@ function Kanbas() {
   };
 
   const deleteCourse = async (idToDelete) => {
-    // console.log(`Course is ${JSON.stringify(course)}`)
     await axios.delete(
       `${URL}/${idToDelete}`
     );
@@ -44,9 +43,7 @@ function Kanbas() {
   };
 
   const updateCourse = async (course) => {
-    console.log('In update course')
-    console.log()
-    const reponse = await axios.put(
+    await axios.put(
       `${URL}/${course._id}`,
       course
     );

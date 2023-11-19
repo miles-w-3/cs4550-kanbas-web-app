@@ -11,7 +11,28 @@ function Crumb({text, highlight}) {
   )
 }
 
-export default function BreadCrumbs({crumbs, studentView=false}) {
+export default function BreadCrumbs({course, params}) {
+  function _makeCrumbs(course, params) {
+    const acc = []
+
+    if (! course.number) return acc; // we're not ready to display yet
+    acc.push(course.number);
+
+    // get page name
+    const pageName = params["*"].split('/')[0];
+    if (pageName) acc.push(pageName);
+
+    // translate assignment id to name where necessary - not used in A5
+    // if (params.assignmentId) {
+    //   const assignment = db.assignments.find(
+    //     (assignment) => assignment._id === params.assignmentId);
+    //   acc.push(assignment.title)
+    // }
+    return acc;
+  }
+
+  const crumbs = _makeCrumbs(course, params);
+
   const crumbsMax = crumbs.length - 1;
   return (
     <div className="mt-2 row wd-breadcrumbs text-danger">

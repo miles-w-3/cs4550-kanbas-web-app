@@ -10,7 +10,7 @@ function Assignments() {
   return (
     <CourseContent >
       <div className="col me-4">
-        <h2>Assignments for course {courseId}</h2>
+        <h2>Assignments</h2>
 
         <ul className="list-group module-group">
           <li className="list-group-item list-group-item-secondary module-group">

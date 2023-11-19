@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 
 function CourseCard({ course, onDelete, onEdit }) {
-
+  console.log(`Link is going to /Kanbas/Courses/${course._id}`)
   return (
     <div className="card shadow-sm" style={{width: '18rem'}}>
       <img src="/kanbas/card.jpg" className="card-img-top" alt="ISEC Bridge Banner"/>

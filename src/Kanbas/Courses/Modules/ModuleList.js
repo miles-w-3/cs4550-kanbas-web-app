@@ -40,15 +40,15 @@ function TopButtons() {
 
 function Module({title, content, onEdit, onDelete}) {
   return (
-    <li class="list-group-item list-group-item-secondary module-group mb-4">
+    <li className="list-group-item list-group-item-secondary module-group mb-4">
       <div className="row">
-        <div class="col">
+        <div className="col">
           {title}
-          <div class="text-muted">
+          <div className="text-muted">
             {content}
           </div>
         </div>
-        <div class="col-auto d-flex align-items-center">
+        <div className="col-auto d-flex align-items-center">
           <button
             className='btn btn-danger'
             onClick={() => onDelete()}>
@@ -93,8 +93,11 @@ export default function ModuleList({ colProps }) {
   };
 
   const handleUpdateModule = async () => {
-    const status = await clientUpdateModule(module);
+    await clientUpdateModule(module);
+    console.log('before dispatch')
     dispatch(updateModule(module));
+    console.log('after dispatch')
+
   };
 
 
@@ -114,7 +117,7 @@ export default function ModuleList({ colProps }) {
                 onChange={(e) => dispatch(setModule({ ...module, description: e.target.value }))}
               />
             </div>
-            <div class="col-auto d-flex align-items-center">
+            <div className="col-auto d-flex align-items-center">
               <button
                 className="btn btn-success"
                 onClick={handleAddModule}>
@@ -122,7 +125,7 @@ export default function ModuleList({ colProps }) {
               </button>
               <button
                 className="btn btn-secondary"
-                onClick={() => dispatch(updateModule(module))}>
+                onClick={() => handleUpdateModule(module)}>
                 Update
               </button>
 
@@ -139,7 +142,7 @@ export default function ModuleList({ colProps }) {
                 title={module.name}
                 content={module.description}
                 onDelete={() => handleDeleteModule(module._id)}
-                onEdit={() => handleUpdateModule()}
+                onEdit={() => dispatch(setModule(module))}
               />
             ))
         }
