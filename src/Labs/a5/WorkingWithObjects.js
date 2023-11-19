@@ -11,7 +11,7 @@ function WorkingWithObjects() {
     completed: false,
     score: 0,
   });
-  const URL = `${process.env.KANBAS_BACKEND}/a5/assignment`
+  const URL = `${process.env.REACT_APP_KANBAS_BACKEND}/a5/assignment`
   const fetchAssignment = async () => {
     const response = await axios.get(`${URL}`);
     setAssignment(response.data);

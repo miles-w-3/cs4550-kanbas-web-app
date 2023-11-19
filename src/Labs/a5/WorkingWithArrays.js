@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 function WorkingWithArrays() {
-  const API = `${process.env.KANBAS_BACKEND}/a5/todos`;
+  const API = `${process.env.REACT_APP_KANBAS_BACKEND}/a5/todos`;
   const [todo, setTodo] = useState({
     id: 1,
     title: "NodeJS Assignment",

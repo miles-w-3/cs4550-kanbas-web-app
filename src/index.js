@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+console.log(`Backend api is ${process.env.REACT_APP_KANBAS_BACKEND}`)
 root.render(
   <React.StrictMode>
     <App />

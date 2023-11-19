@@ -5,7 +5,7 @@ function Assignment5() {
     <div>
       <h1>Assignment 5</h1>
       <div className="list-group">
-        <a href={`${process.env.KANBAS_URL}/a5/welcome`}
+        <a href={`${process.env.REACT_APP_KANBAS_BACKEND}/a5/welcome`}
           className="list-group-item">
           Welcome
         </a>

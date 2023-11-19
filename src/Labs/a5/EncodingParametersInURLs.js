@@ -4,7 +4,7 @@ function EncodingParametersInURLs() {
   const [a, setA] = useState(34);
   const [b, setB] = useState(23);
   const [result, setResult] = useState(0);
-  const URL = process.env.KANBAS_BACKEND
+  const URL = process.env.REACT_APP_KANBAS_BACKEND
   const fetchSum = async (a, b) => {
     const response = await
       axios.get(`${URL}/a5/add/${a}/${b}`);
