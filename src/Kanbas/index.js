@@ -7,6 +7,10 @@ import './style.css'
 import Courses from "./Courses";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { signin } from "./users/client";
+import Account from "./users/account";
+import Signin from "./users/signIn";
+import UserTable from "./users/table";
 
 
 function Kanbas() {
@@ -65,6 +69,10 @@ function Kanbas() {
       <KanbasNavigation/>
       <div className="main-content ps-3">
         <Routes>
+          <Route path="/signin" element={Signin} />
+          <Route path="/account" element={Account} />
+          <Route path="/account/:id" element={Account} />
+          <Route path="/admin/users" element={UserTable} />
           <Route path="/" element={<Navigate to="Dashboard" />} />
           <Route path="Account" element={<h1>Account</h1>} />
           <Route path="Dashboard" element={
