@@ -9,6 +9,7 @@ function Signup() {
   const navigate = useNavigate();
   const signup = async () => {
     try {
+      console.log(`Signing up with credentials ${JSON.stringify(credentials)}`)
       await client.signup(credentials);
       navigate("/Kanbas/account");
     } catch (err) {

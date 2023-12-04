@@ -82,7 +82,7 @@ function Account() {
       )}
       {!account && (
         <div>
-          Currently not logged in. <Link to='/Kanbas/signin'>Go to Sign In</Link>
+          Currently not logged in. <Link to='/Kanbas/signin'>Go to Sign In</Link> or <Link to='/Kanbas/signup'>Sign Up</Link>
         </div>
       )}
     </div>

@@ -11,6 +11,7 @@ import { signin } from "./users/client";
 import Account from "./users/account";
 import Signin from "./users/signIn";
 import UserTable from "./users/table";
+import Signup from "./users/signup";
 
 
 function Kanbas() {
@@ -70,6 +71,7 @@ function Kanbas() {
       <div className="main-content ps-3">
         <Routes>
           <Route path="signin" element={<Signin />} />
+          <Route path="signup" element={<Signup />} />
           <Route path="account" element={<Account />} />
           <Route path="account/:id" element={<Account />} />
           <Route path="admin/users" element={<UserTable />} />
