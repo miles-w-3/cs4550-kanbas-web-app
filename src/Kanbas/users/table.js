@@ -13,7 +13,7 @@ function UserTable() {
   const createUser = async () => {
     try {
       const newUser = await client.createUser(user);
-      setUsers([newUser, ...users]);
+      if (Object.keys(newUser).length !== 0) setUsers([newUser, ...users]);
     } catch (err) {
       console.log(err);
     }
@@ -28,7 +28,7 @@ function UserTable() {
   };
   const updateUser = async () => {
     try {
-      const status = await client.updateUser(user);
+      await client.updateUser(user);
       setUsers(users.map((u) => (u._id === user._id ? user : u)));
     } catch (err) {
       console.log(err);
@@ -56,43 +56,47 @@ function UserTable() {
           </tr>
           <tr>
             <td>
-              <input value={user.password} onChange={(e) => setUser({ ...user, password: e.target.value })} />
-              <input value={user.username} onChange={(e) => setUser({ ...user, username: e.target.value })} />
+              <input value={user.password ?? ''} onChange={(e) => setUser({ ...user, password: e.target.value })} />
+              <input value={user.username ?? ''} onChange={(e) => setUser({ ...user, username: e.target.value })} />
             </td>
             <td>
-              <input value={user.firstName} onChange={(e) => setUser({ ...user, firstName: e.target.value })} />
+              <input value={user.firstName ?? ''} onChange={(e) => setUser({ ...user, firstName: e.target.value })} />
             </td>
             <td>
-              <input value={user.lastName} onChange={(e) => setUser({ ...user, lastName: e.target.value })} />
+              <input value={user.lastName ?? ''} onChange={(e) => setUser({ ...user, lastName: e.target.value })} />
             </td>
             <td>
-              <select value={user.role} onChange={(e) => setUser({ ...user, role: e.target.value })}>
+              <select value={user.role ?? ''} onChange={(e) => setUser({ ...user, role: e.target.value })}>
                 <option value="USER">User</option>
                 <option value="ADMIN">Admin</option>
                 <option value="FACULTY">Faculty</option>
                 <option value="STUDENT">Student</option>
               </select>
             </td>
-            <BsFillCheckCircleFill onClick={updateUser}
-              className="me-2 text-success fs-1 text" />
             <td>
-              <BsPlusCircleFill onClick={createUser} />
+              <BsFillCheckCircleFill onClick={updateUser}
+                className="text-success text" />
+            </td>
+            <td>
+              <BsPlusCircleFill onClick={createUser} className="text-success text" />
             </td>
           </tr>
         </thead>
         <tbody>
           {users.map((user) => (
             <tr key={user._id}>
-              <Link to={`/project/account/${user._id}`}>
-                {user.username}
-              </Link>
+              <td>
+                <Link to={`/Kanbas/account/${user._id}`}>
+                  {user.username}
+                </Link>
+              </td>
               <td>{user.firstName}</td>
               <td>{user.lastName}</td>
               <td className="text-nowrap">
                 <button className="btn btn-warning me-2">
                   <BsPencil onClick={() => selectUser(user)} />
                 </button>
-                <button onClick={() => deleteUser(user)}>
+                <button className="btn" onClick={() => deleteUser(user)}>
                   <BsTrash3Fill />
                 </button>
               </td>

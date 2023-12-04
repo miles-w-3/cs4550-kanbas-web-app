@@ -69,12 +69,11 @@ function Kanbas() {
       <KanbasNavigation/>
       <div className="main-content ps-3">
         <Routes>
-          <Route path="/signin" element={Signin} />
-          <Route path="/account" element={Account} />
-          <Route path="/account/:id" element={Account} />
-          <Route path="/admin/users" element={UserTable} />
+          <Route path="signin" element={<Signin />} />
+          <Route path="account" element={<Account />} />
+          <Route path="account/:id" element={<Account />} />
+          <Route path="admin/users" element={<UserTable />} />
           <Route path="/" element={<Navigate to="Dashboard" />} />
-          <Route path="Account" element={<h1>Account</h1>} />
           <Route path="Dashboard" element={
             <Dashboard
               courses={courses}

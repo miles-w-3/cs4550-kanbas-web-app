@@ -19,14 +19,14 @@ function Account() {
     } else {
       fetchAccount();
     }
-  }, []);
+  }, [id]);
 
   const save = async () => {
     await client.updateUser(account);
   };
   const signout = async () => {
     await client.signout();
-    navigate("/project/signin");
+    navigate("/Kanbas/signin");
   };
 
 
@@ -75,9 +75,14 @@ function Account() {
           <button onClick={signout}>
             Signout
           </button>
-          <Link to="/project/admin/users" className="btn btn-warning w-100">
+          <Link to="/Kanbas/admin/users" className="btn btn-warning w-100">
             Users
           </Link>
+        </div>
+      )}
+      {!account && (
+        <div>
+          Currently not logged in. <Link to='/Kanbas/signin'>Go to Sign In</Link>
         </div>
       )}
     </div>

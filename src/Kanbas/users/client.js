@@ -1,6 +1,11 @@
 import axios from "axios";
-export const BASE_API = process.env.REACT_APP_BASE_API_URL;
+
+
+export const BASE_API = process.env.REACT_APP_KANBAS_BACKEND;
+console.log(`Base API is ${BASE_API}`);
 export const USERS_API = `${BASE_API}/api/users`;
+console.log(`Users API is ${USERS_API}`);
+
 const request = axios.create({
   withCredentials: true,
 });
@@ -39,7 +44,10 @@ export const signup = async (credentials) => {
     `${USERS_API}/signup`, credentials);
   return response.data;
 };
-
+export const signout = async () => {
+  const response = await request.post(`${USERS_API}/signout`);
+  return response.data;
+};
 
 
 
